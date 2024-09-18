@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+    <%- include('./templates/header.ejs')%>
+
+<body>
+    <%- include('./templates/menu.ejs') %>    
+
+
+    <div>
+
+      Se recibieron los datos: de <%= data.size %> registros
+
+        <%if( data.size > 0){%>
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Id Avion</th>
+                <th>Nombre Avion</th>
+                <th>Apodo Avion</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%for(const [k,v] of data ){%>
+                <tr>
+                  <td>
+                    <%= k %>
+                  </td>
+                  <td>
+                    <%= v.name %>
+                  </td>
+                  <td>
+                    <%= v.nickname %>
+                  </td>
+                  <td>
+                    <%= v.department %>
+                  </td>
+                  <td>
+                    <%= v.city %>
+                  </td>
+                </tr>
+              <%}%>
+            </tbody>
+          </table>
+        <%}else{%>
+          <a href="/new-record">Agregar Nuevo Avion</a>
+        <%}%>
+        
+      </div>
+ 
+<%- include('./templates/footer.ejs')%>  
+  
+</body>
+</html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="es">
+    <%- include('./templates/header.ejs')%>
+</head>
+<body>
+
+    <%- include('./templates/menu.ejs') %>   
+
+
+    <select name="airplane">
+        <% data.forEach(data => { %>
+            <option value="<%= data.id %>"><%= data.name %> (<%= data.nickname %>)</option>
+        <% }) %>
+    
+      </select>
+    
+    
+    <button class="btn btn-primary" type="submit" id="btnDelete">Borrar</button>
+
+    <%- include('./templates/footer.ejs')%>
+    <script src="js/scripts-delete.js"></script>
+</body>
+</html>

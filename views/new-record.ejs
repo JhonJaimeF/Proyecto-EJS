@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('./templates/header.ejs')%>
+<body>
+
+    <%- include('./templates/menu.ejs') %> 
+
+    <div class="container">
+        <div class="card">
+          <div class="card-header"><h1 style="text-align: center;"><%= title %></h1></div>
+          <div class="card-body">
+            <form method="post">
+              <div class="mb-3">
+                <label for="idAirplane" class="form-label">Id avion</label>
+                <input type="text" class="form-control" id="idAirplane" name="id">
+              </div>
+              <div class="mb-3">
+                <label class="form-label" for="nameAirplane">Nombre avion</label>
+                <input type="text" class="form-control" id="nameAirplane" name="name">
+              </div>
+              <div class="mb-3"></div>
+                <label class="form-label" for="valueAirplane">Apodo avion</label>
+                <input type="text" class="form-control" id="valueAirplane" name="value">
+              </div>
+
+              <select id="department" name="department">
+                <option value="">Seleccione un departamento</option>
+                <% department.forEach(dept => { %>
+                  <option value="<%= dept.code %>"><%= dept.name %></option>
+                <% }) %>
+              </select>
+              
+              <select id="towns" name="towns">
+                <option value="">Seleccione una ciudad</option>
+                <% towns.forEach(town => { %>
+                  <option value="<%= town.code %>" data-department="<%= town.departmentCode %>"><%= town.name %></option>
+                <% }) %>
+              </select>
+              <button class="btn btn-primary" type="submit" id="btnSend">Enviar</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    
+      <script src="/js/scripts.js"></script>
+    <%- include('./templates/footer.ejs')%>
+
+   
+</body>
+</html>
