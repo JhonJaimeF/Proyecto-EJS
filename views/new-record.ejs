@@ -26,14 +26,14 @@
               <select id="department" name="department">
                 <option value="">Seleccione un departamento</option>
                 <% department.forEach(dept => { %>
-                  <option value="<%= dept.code %>"><%= dept.name %></option>
+                  <option value="<%= dept.code %>"><%= dept.name %></option> <!-- Aquí usas 'department' en lugar de 'code' -->
                 <% }) %>
               </select>
               
               <select id="towns" name="towns">
                 <option value="">Seleccione una ciudad</option>
                 <% towns.forEach(town => { %>
-                  <option value="<%= town.code %>" data-department="<%= town.departmentCode %>"><%= town.name %></option>
+                  <option value="<%= town.department %>" data-department="<%= town.department %>"><%= town.name %></option> <!-- Aquí también usas 'department' -->
                 <% }) %>
               </select>
               <button class="btn btn-primary" type="submit" id="btnSend">Enviar</button>

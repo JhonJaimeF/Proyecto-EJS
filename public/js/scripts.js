@@ -3,17 +3,17 @@ const townsSelect = document.getElementById('towns');
 const townsOptions = Array.from(townsSelect.options); // Guardar todas las opciones de ciudades
 
 departmentSelect.addEventListener('change', function() {
-  const selectedDepartment = this.value;
+  const selectedDepartmentCode = this.value;
 
-  console.log("Departamento seleccionado:", selectedDepartment);
+  console.log("Código de departamento seleccionado:", selectedDepartmentCode);
 
   // Limpiar las opciones del select de ciudades
   townsSelect.innerHTML = '<option value="">Seleccione una ciudad</option>';
 
-  // Filtrar las ciudades según el departamento seleccionado
+  // Filtrar las ciudades según el código de departamento seleccionado
   const filteredTowns = townsOptions.filter(option => {
-    const departmentCode = option.getAttribute('data-department');
-    return departmentCode === selectedDepartment || option.value === ''; // Incluye el placeholder
+    const departmentAttribute = option.getAttribute('data-department');
+    return departmentAttribute === selectedDepartmentCode || option.value === ''; // Incluye el placeholder
   });
 
   // Añadir las opciones filtradas al select de ciudades
@@ -26,8 +26,10 @@ document.querySelector('#btnSend').addEventListener('click', ()=>{
     const idArp= document.querySelector('#idAirplane').value;  
     const nameArp= document.querySelector('#nameAirplane').value;  
     const valueArp= document.querySelector('#valueAirplane').value;  
+    const departmentArp= document.querySelector('#department').value;  
+    const cityArp= document.querySelector('#towns').value;  
     
-    const data= {id:idArp,name:nameArp,value:valueArp};
+    const data= {id:idArp,name:nameArp,value:valueArp,department:departmentArp,city:cityArp};
     
     
     fetch('http://localhost:3000', {
